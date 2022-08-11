@@ -1,4 +1,3 @@
-
 from distutils.command.upload import upload
 from enum import unique
 from statistics import mode
@@ -7,6 +6,7 @@ from django.db import models
 from autoslug import AutoSlugField
 from blog_app.models import CategoryModel
 from django.contrib.auth.models import User
+
 #ck editor import edilecek!
 class TextModel(models.Model):
     title = models.CharField(max_length=50)
