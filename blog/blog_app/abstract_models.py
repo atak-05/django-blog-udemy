@@ -1,5 +1,5 @@
 from django.db import models
-
+#For Don't repeat yourself 
 
 class DateAbstractModel(models.Model):
     created_at= models.DateTimeField(auto_now_add=True)

@@ -7,7 +7,7 @@ from blog_app.models import TextModel
 from blog_app.abstract_models import DateAbstractModel
 
 
-class CommentModel(models.Model):
+class CommentModel(DateAbstractModel):
     writer = models.ForeignKey('account.CustomUserModel', on_delete=models.CASCADE, related_name='comment')
     text = models.ForeignKey(TextModel, on_delete=models.CASCADE, related_name ='comments')
     comment = models.TextField()
