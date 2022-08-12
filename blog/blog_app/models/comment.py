@@ -7,7 +7,7 @@ from blog_app.models import TextModel
 
 
 class CommentModel(models.Model):
-    writer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comment')
+    writer = models.ForeignKey('account.CustomUserModel', on_delete=models.CASCADE, related_name='comment')
     text = models.ForeignKey(TextModel, on_delete=models.CASCADE, related_name ='comments')
     comment = models.TextField()
     created_at= models.DateTimeField(auto_now_add=True)

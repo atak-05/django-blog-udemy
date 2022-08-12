@@ -5,7 +5,6 @@ from tabnanny import verbose
 from django.db import models
 from autoslug import AutoSlugField
 from blog_app.models import CategoryModel
-from django.contrib.auth.models import User
 
 #ck editor import edilecek!
 class TextModel(models.Model):
@@ -16,7 +15,7 @@ class TextModel(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     slug = AutoSlugField(populate_from= 'title', unique=True)
     categories = models.ManyToManyField(CategoryModel, related_name='text')
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='text_author')
+    author = models.ForeignKey('account.CustomUserModel', on_delete=models.CASCADE, related_name='text_author')
     
     class Meta:
         verbose_name = 'Text'
