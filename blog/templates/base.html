@@ -1,0 +1,50 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> {% block title %}{% endblock %} </title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!--Navbar Start-->
+    {% include "components/navbar.html" %}
+    <!--Navbar End-->
+    <!--Main Part-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9">
+                {% block content %} {%endblock%}
+
+                <!--Main Part-->
+                <!--pagination Start-->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item disabled">
+                            <a class="page-link">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!--Side-bar Start-->
+            {% include "components/sidebar.html" %}
+            <!--Side-bar End-->
+        </div>
+    </div>
+    <!--Pagination End-->
+    <!--Footer Start-->
+    {% include "components/footer.html" %}
+    <!--Footer End-->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>
