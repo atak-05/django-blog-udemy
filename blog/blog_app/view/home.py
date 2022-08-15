@@ -10,3 +10,4 @@ def home(request):
     return render (request,'pages/index.html',context={
         'texts' : paginator.get_page(page)
         })
+    
