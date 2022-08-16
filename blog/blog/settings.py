@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'blog',
     'blog_app',
     'account',
+    #third party
+    'crispy_forms',
     
 ]
 
@@ -139,5 +141,8 @@ MEDIA_URL = '/media/' # I Did
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'account.CustomUserModel' #For Custom User 
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 
