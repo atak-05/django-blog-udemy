@@ -1,12 +1,22 @@
 <div class="col-sm-3">
-    <div class="card" style="width: 18rem;">
-      <div class="card-header">
-        Featured
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-      </ul>
+  <div class="card" style="width: 18rem;">
+    {% if request.user.is_authenticated %}
+    <div class="card-header">
+      MENU
     </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">My Profil</li>
+      <li class="list-group-item">Change Password</li>
+      <li class="list-group-item">Add Text</li>
+      <li class="list-group-item">
+        <a href=" {% url 'mytext' %} ">
+          My Texts
+        </a>
+      </li>
+      <li class="list-group-item">Exit</li>
+    </ul>
+    {% else %}
+    Login formu gelecek
+    {% endif %}
   </div>
+</div>

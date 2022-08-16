@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+
+{%block title%}My Blog{%endblock%}
+{%block content%}
+<!--Table Part-->
+  <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Title</th>
+              <th scope="col">Updated at</th>
+              <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for text in texts%}
+            <tr>
+              <th scope="row">1{{text.id}}</th>
+              <td>{{text.title}}</td>
+              <td>{{text.updated_at}}</td>
+              <td>Aksiyonlar</td>
+            </tr>
+            {% empty %}
+            <p>Hiç yazı bulunamadı.</p>
+          {% endfor %}
+      </tbody>
+  </table>
+<!--Table Part END-->
+<!--Main Part-->
+
+<!--pagination Start-->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            {% if texts.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{texts.previous_page_number}}" tabindex="-1">Previous</a>
+                </li>
+              {% else %}
+                <li class="page-item disabled">
+                  <a class="page-link">Previous</a>
+                </li>
+              {%endif%}
+              <li class="page-item"><a class="page-link" href="#"> {{texts.number}}</a></li>
+            {%if texts.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{texts.next_page_number}}">{{texts.next_page_number}}</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?page={{texts.paginator.num_pages}}">End</a>
+              </li>
+            {%endif%}
+        </ul>
+    </nav>
+</div>
+{%endblock%}
