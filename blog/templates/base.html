@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> {% block title %}{% endblock %} </title>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet" >
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
 </head>
 
 <body>
@@ -15,23 +15,35 @@
     {% include "components/navbar.html" %}
     <!--Navbar End-->
     <!--Main Part-->
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-sm-9">
                 {% block content %} {%endblock%}
-
                 <!--Main Part-->
-               
-            <!--Side-bar Start-->
-            {% include "components/sidebar.html" %}
+                <!--Side-bar Start-->
+            </div>
+            <div class="col-sm-3">
+                {% include "components/sidebar.html" %}
+            </div>
             <!--Side-bar End-->
         </div>
+
+        <!--Pagination End-->
+        <!--Footer Start-->
+        {% include "components/footer.html" %}
     </div>
-    <!--Pagination End-->
-    <!--Footer Start-->
-    {% include "components/footer.html" %}
     <!--Footer End-->
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+

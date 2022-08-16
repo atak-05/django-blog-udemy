@@ -12,15 +12,17 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title"> {{text.title}} </h5>
+        <h5 class="card-title">
+        <a href="{% url 'detail' slug=text.slug %}"> {{text.title}}</a> 
+        </h5>
         <p class="card-text"> {{text.context|truncatechars:250}} </p>
-        <p class="card-text"><small class="text-muted"> {{text.created_at|timesince}} önce paylaşıldı</small></p>
+        <p class="card-text"><small class="text-muted"> {{text.created_at|timesince}} before</small></p>
       </div>
     </div>
   </div>
 </div>
 {% empty %}
-<p>Hiç yazı bulunamadı.</p>
+<p>There are no posts</p>
 {% endfor %}
 <!--pagination Start-->
 <nav aria-label="Page navigation example">
@@ -46,5 +48,5 @@
    
   </ul>
 </nav>
-</div>
+
 {%endblock%}
