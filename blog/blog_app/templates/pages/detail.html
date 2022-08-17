@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {%block title%}{{texts.title}}{%endblock%}
+{% load crispy_forms_tags %}
 
 {%block content%}
 <!--Main Part-->
@@ -35,25 +35,34 @@
 </div>
 <!--Comment Part Start-->
 <h5>Comments</h5>
-{%for comment in comments%}
-<div class="card">
-  <div class="card-body " style="display:flex;flex-direction: row; ">
-    <div>
-      {% if comment.writer.avatar %}
-      <img src="{{comment.writer.avatar.url}}" class="rounded" class="pt-4 " width="75px" height="75px">
-      {% else %}
-      <img src="{% static 'img/no-avatar.jpg' %}" class="rounded" class="pt-4" width="75px" height="75px">
-      {% endif %}
-    </div>
-    <div class="ms-3">
-      <h5 class="card-title">{{comment.writer.username}}</h5>
-      <p class="card-text">{{comment.comment}}</p>
+  {% if request.user.is_authenticated %}
+      <form method="POST">
+        {% csrf_token %}
+        {{add_comment_form | crispy }}
+        <input type="submit" value="Add Comment" class="btn btn-danger mt-4 mb-4"/>
+      </form>
+  {% else %}
+      <p>Please, create a account</p>
+  {% endif %}    
+  {%for comment in comments%}
+  <div class="card">
+    <div class="card-body " style="display:flex;flex-direction: row; ">
+      <div>
+        {% if comment.writer.avatar %}
+        <img src="{{comment.writer.avatar.url}}" class="rounded" class="pt-4 " width="75px" height="75px">
+        {% else %}
+        <img src="{% static 'img/no-avatar.jpg' %}" class="rounded" class="pt-4" width="75px" height="75px">
+        {% endif %}
+      </div>
+      <div class="ms-3">
+        <h5 class="card-title">{{comment.writer.username}}</h5>
+        <p class="card-text">{{comment.comment}}</p>
+      </div>
     </div>
   </div>
-</div>
-{% empty %}
-<p>There are no comments</p>
-{%endfor%}
-<!--Comment Part End-->
+  {% empty %}
+  <p>There are no comments</p>
+  {%endfor%}
+  <!--Comment Part End-->
 
 {%endblock%}
