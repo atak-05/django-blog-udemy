@@ -16,7 +16,15 @@
       <div class="card-body">
         <h5 class="card-title"> {{text.title}} </h5>
         <p class="card-text"> {{text.context}} </p>
-        <p class="card-text"><small class="text-muted"> {{text.created_at|timesince}} before</small></p>
+        <p class="card-text"><small class="text-muted"> {{text.created_at|timesince}} before</small>
+        </p>
+        <p>
+          {% if request.user == text.author %}
+            <a  class="btn btn-danger" href=" {% url 'update_text' slug=text.slug %} ">
+                Update
+            </a>
+          {%endif%}  
+        </p>
       </div>
     </div>
   </div>
