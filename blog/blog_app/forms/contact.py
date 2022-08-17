@@ -6,7 +6,7 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = ContactModel
         fields = ("name_lastname","email","message")
-
+        
 
     
     
