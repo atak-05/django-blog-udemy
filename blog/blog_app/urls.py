@@ -3,6 +3,7 @@ from unicodedata import name
 from django.urls import path
 from blog_app.view import contact
 from blog_app.view import home, category, my_text, detail,add_text,update_text,delete_text
+from .view.delete_comment import delete_comment
 
 urlpatterns = [
     path('', home, name='home'),
@@ -13,4 +14,5 @@ urlpatterns = [
     path('add-text/', add_text, name='add_text'),
     path('update-text/<slug:slug>', update_text ,name='update_text'),
     path('delete-text/<slug:slug>', delete_text ,name='delete_text'),
+    path('delete-comment/<int:id>', delete_comment ,name='delete_comment'),
 ]

@@ -18,16 +18,15 @@
         <p class="card-text"> {{text.context}} </p>
         <p class="card-text"><small class="text-muted"> {{text.created_at|timesince}} before</small>
         </p>
-
         {% if request.user == text.author %}
-        <p>
-          <a class="btn btn-primary" href=" {% url 'update_text' slug=text.slug %} ">
-            Update
-          </a>
-          <a class="btn btn-danger" href=" {% url 'delete_text' slug=text.slug %} ">
-            Delete
-          </a>
-        </p>
+          <p>
+            <a class="btn btn-primary" href=" {% url 'update_text' slug=text.slug %} ">
+              Update
+            </a>
+            <a class="btn btn-danger" href=" {% url 'delete_text' slug=text.slug %} ">
+              Delete
+            </a>
+          </p>
         {%endif%}
       </div>
     </div>
@@ -57,6 +56,11 @@
       <div class="ms-3">
         <h5 class="card-title">{{comment.writer.username}}</h5>
         <p class="card-text">{{comment.comment}}</p>
+            {% if request.user == comment.writer or request.user == text.author %}
+              <p>
+                <a class="btn btn-danger" href=" {% url 'delete_comment' id=comment.id %} ">Delete Comment</a>
+              </p>
+            {%endif%}
       </div>
     </div>
   </div>
