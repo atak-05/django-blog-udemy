@@ -5,7 +5,9 @@
         MENU
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">My Profil</li>
+        <li class="list-group-item"><a href=" {% url 'change_profile' %} ">
+          My Profile
+          </a></li>
 
         <li class="list-group-item">
           <a href=" {% url 'change_password' %} ">
@@ -36,3 +38,4 @@
       {% endif %}
     </div>
   </div>
+
