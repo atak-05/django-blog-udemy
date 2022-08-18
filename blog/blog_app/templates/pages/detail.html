@@ -43,13 +43,9 @@
   {% else %}
       <p>Please, create a account</p>
   {% endif %}   
-  {% if messages %}
-    <div class="alert alert-success" role="alert">
-      {% for message in messages %}
-        {{ message }}
-      {% endfor %}
-    </div>     
-  {% endif %}
+  <!--Message-->
+    {%  include 'components/message.html' %}
+    <!-- Message End-->
   {%for comment in comments%}
   <div class="card">
     <div class="card-body " style="display:flex;flex-direction: row; ">

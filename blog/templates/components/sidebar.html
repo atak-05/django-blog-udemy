@@ -7,11 +7,17 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">My Profil</li>
 
-        <li class="list-group-item">Change Password</li>
+        <li class="list-group-item">
+          <a href=" {% url 'change_password' %} ">
+            Change Password         
+          </a>
+        </li>
 
-        <li class="list-group-item"><a href=" {% url 'add_text' %} ">
+        <li class="list-group-item">
+          <a href=" {% url 'add_text' %} ">
           Add Post
-        </a></li>
+        </a>
+        </li>
 
         <li class="list-group-item">
           <a href=" {% url 'mytext' %} ">
@@ -23,6 +29,7 @@
           Exit
           </a>
       </li>
+      
       </ul>
       {% else %}
         Login formu gelecek
