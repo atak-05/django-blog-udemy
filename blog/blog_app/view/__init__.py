@@ -1,6 +1,6 @@
 from .contact import contact
 from .home import home
-from .category import category
+from .category import CategoryListView
 from .my_text import my_text
 from .detail import DetailView
 from .add_text import add_text
