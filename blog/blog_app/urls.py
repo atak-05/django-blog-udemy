@@ -2,7 +2,7 @@ import imp
 from unicodedata import name
 from django.urls import path
 from blog_app.view import contact
-from blog_app.view import home, category, my_text, detail,add_text,update_text,delete_text
+from blog_app.view import home, category, my_text, DetailView,add_text,update_text,delete_text
 from .view.delete_comment import delete_comment
 from django.views.generic import TemplateView, RedirectView
 
@@ -25,9 +25,9 @@ urlpatterns = [
     # ==================================================
  
     path('mytext/', my_text, name='mytext'),
-    # ==================================================
+    # ====================class view larda as_view() sakın ınutma==============================
 
-    path('detail/<slug:slug>', detail, name='detail'),
+    path('detail/<slug:slug>', DetailView.as_view(), name='detail'),
     # ==================================================
 
     path('add-text/', add_text, name='add_text'),
