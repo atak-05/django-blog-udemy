@@ -17,17 +17,16 @@
     <!--Main Part-->
     <div class="container mt-5">
         <div class="row">
-            <div class="col-sm-9">
+            <div {% if request.user.is_authenticated %} class="col-sm-9" {% else %} class="col-12" {% endif %}>
                 {% block content %} {%endblock%}
                 <!--Main Part-->
                 <!--Side-bar Start-->
             </div>
-            <div class="col-sm-3">
-                {% include "components/sidebar.html" %}
-            </div>
+            {% if request.user.is_authenticated %}
+                {% include 'components/sidebar.html' %}
+            {% endif %}
             <!--Side-bar End-->
         </div>
-
         <!--Pagination End-->
         <!--Footer Start-->
         {% include "components/footer.html" %}

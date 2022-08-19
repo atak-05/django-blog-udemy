@@ -144,5 +144,9 @@ AUTH_USER_MODEL = 'account.CustomUserModel' #For Custom User
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+LOGIN_REDIRECT_URL = 'home'
+ 
+# login redirect ile giriş yapan kullanıcı direk sayfaya yönderilecektir.
+
 
 

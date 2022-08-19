@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+    {%block title%}My Blog{%endblock%}
+    {%block content%}
+      <!--Message-->
+      <!-- Message End-->
+        <form  method="POST">
+            {% csrf_token %}
+            {{form | crispy }}
+            <input type="submit" class="btn btn-outline-dark mt-5 mb-5" value="Login"/>
+        </form>     
+    {%endblock%}
