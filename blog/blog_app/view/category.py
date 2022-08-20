@@ -10,8 +10,10 @@ class CategoryListView(ListView):
     
     def get_queryset(self) :
         category = get_object_or_404(CategoryModel, slug = self.kwargs['categorySlug'])   
-        return category.texts.all()
+        return category.text.all()
 # Bu kısım  klasik yöntemdir.
+
+
 
 # def category(request, categorySlug):
 #     category= get_object_or_404(CategoryModel, slug= categorySlug)
@@ -23,4 +25,3 @@ class CategoryListView(ListView):
 #         'texts' : paginator.get_page(page),
 #         'category_title' :category.title
 #         })
-    
