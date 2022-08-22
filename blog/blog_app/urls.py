@@ -1,7 +1,7 @@
 import imp
 from unicodedata import name
 from django.urls import path
-from blog_app.view import contact
+from blog_app.view import ContactFormView
 from blog_app.view import home, CategoryListView, my_text, DetailView,AddTextCreateView,UpdateTextUpdateView,DeleteTextDeleteView
 from .view.delete_comment import delete_comment
 from django.views.generic import TemplateView, RedirectView
@@ -18,7 +18,7 @@ urlpatterns = [
         url='http://www.google.com'
         ), name='redirect'),
     # ==================================================
-    path('contact/', contact, name='contact'),
+    path('contact/', ContactFormView.as_view(), name='contact'),
     # ==================================================
 
     path('category/<slug:categorySlug>', CategoryListView.as_view(), name='category'),
