@@ -5,5 +5,5 @@ from .my_text import my_text
 from .detail import DetailView
 from .add_text import add_text
 from .update_text import update_text
-from .delete_text import delete_text
+from .delete_text import DeleteTextDeleteView
 from .delete_comment import delete_comment

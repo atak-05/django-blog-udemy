@@ -2,7 +2,7 @@ import imp
 from unicodedata import name
 from django.urls import path
 from blog_app.view import contact
-from blog_app.view import home, CategoryListView, my_text, DetailView,add_text,update_text,delete_text
+from blog_app.view import home, CategoryListView, my_text, DetailView,add_text,update_text,DeleteTextDeleteView
 from .view.delete_comment import delete_comment
 from django.views.generic import TemplateView, RedirectView
 
@@ -36,7 +36,7 @@ urlpatterns = [
     path('update-text/<slug:slug>', update_text ,name='update_text'),
     # ==================================================
 
-    path('delete-text/<slug:slug>', delete_text ,name='delete_text'),
+    path('delete-text/<slug:slug>', DeleteTextDeleteView.as_view() ,name='delete_text'),
     # ==================================================
 
     path('delete-comment/<int:id>', delete_comment ,name='delete_comment'),

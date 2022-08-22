@@ -1,10 +1,18 @@
+from re import template
+from urllib import request
 from django.contrib.auth.decorators import login_required
 from blog_app.models import TextModel
-from django.shortcuts import get_object_or_404,redirect
+from django.shortcuts import redirect
+from django.views.generic import DeleteView
+from django.urls import reverse_lazy
+
+
+class DeleteTextDeleteView(DeleteView):
+    template_name = 'pages/delete_text_confirm.html'
+    success_url= reverse_lazy('mytext')
+    def get_queryset(self):
+        text = TextModel.objects.filter(slug=self.kwargs['slug'], author=self.request.user)
+        return text  
 
 
 
-@login_required(login_url='/')
-def delete_text (request, slug):
-    get_object_or_404 (TextModel, slug=slug, author= request.user).delete()
-    return redirect('mytext')

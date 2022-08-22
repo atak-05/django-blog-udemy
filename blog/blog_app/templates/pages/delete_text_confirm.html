@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+    {%block title%}Yoy are sure for this delete ? {%endblock%}
+    {%block content%}
+        <form method="POST">
+            {% csrf_token %}
+            <p> Are you sure for delete? </p>
+            <input type="submit" class="btn btn-outline-dark mt-5 mb-5" value="Yes"/>
+        </form>     
+    {%endblock%}
