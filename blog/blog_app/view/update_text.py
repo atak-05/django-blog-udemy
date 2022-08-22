@@ -2,6 +2,23 @@ from django.shortcuts import render, redirect, get_object_or_404
 from blog_app.forms import  UpdateTextForm
 from django.contrib.auth.decorators import login_required
 from blog_app.models import TextModel
+from django.views.generic import UpdateView
+from django.urls import reverse
+
+class UpdateTextUpdateView(UpdateView):
+    template_name = 'pages/update_text.html'
+    fields = ('title' , 'image' , 'context', 'categories')
+    def get_object(self):
+        text = get_object_or_404(
+            TextModel,
+            slug = self.kwargs.get('slug'),
+            author = self.request.user
+        )
+        return text
+    def get_success_url(self):
+        return reverse('detail' , kwargs={
+            'slug' : self.get_object().slug
+        })
 
 
 @login_required(login_url='/')

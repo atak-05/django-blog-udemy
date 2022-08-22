@@ -2,7 +2,7 @@ import imp
 from unicodedata import name
 from django.urls import path
 from blog_app.view import contact
-from blog_app.view import home, CategoryListView, my_text, DetailView,AddTextCreateView,update_text,DeleteTextDeleteView
+from blog_app.view import home, CategoryListView, my_text, DetailView,AddTextCreateView,UpdateTextUpdateView,DeleteTextDeleteView
 from .view.delete_comment import delete_comment
 from django.views.generic import TemplateView, RedirectView
 
@@ -33,7 +33,7 @@ urlpatterns = [
     path('add-text/', AddTextCreateView.as_view(), name='add_text'),
     # ==================================================
 
-    path('update-text/<slug:slug>', update_text ,name='update_text'),
+    path('update-text/<slug:slug>', UpdateTextUpdateView.as_view() ,name='update_text'),
     # ==================================================
 
     path('delete-text/<slug:slug>', DeleteTextDeleteView.as_view() ,name='delete_text'),
