@@ -6,7 +6,7 @@ from django.views.generic import FormView
 class ContactFormView(FormView):
     template_name = 'pages/contact.html'
     form_class = ContactForm
-    success_url = '/contact/email-submited'
+    success_url = '/email-submited'
     
     def form_valid(self,form):
         form.save()

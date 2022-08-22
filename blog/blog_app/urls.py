@@ -40,4 +40,8 @@ urlpatterns = [
     # ==================================================
 
     path('delete-comment/<int:id>', delete_comment ,name='delete_comment'),
+    
+    path('email-submited', TemplateView.as_view(
+        template_name= 'pages/email-submited.html'
+        ), name='email-submited')
 ]
