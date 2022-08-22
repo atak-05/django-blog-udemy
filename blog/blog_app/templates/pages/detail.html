@@ -16,7 +16,13 @@
       <div class="card-body">
         <h5 class="card-title"> {{text.title}} </h5>
         <p class="card-text"> {{text.context}} </p>
-        <p class="card-text"><small class="text-muted"> {{text.created_at|timesince}} before</small>
+        <p class="card-text">
+          <small class="text-muted"> {{text.created_at|timesince}} before
+            | Author <a href = "{% url 'profil' username=text.author.username %}" > {{text.author.username}} </a>
+
+          </small>
+
+
         </p>
         {% if request.user == text.author %}
           <p>
