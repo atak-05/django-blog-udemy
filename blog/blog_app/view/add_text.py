@@ -4,9 +4,12 @@ from blog_app.forms import AddTextForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView
 from blog_app.models import TextModel
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class AddTextCreateView(CreateView):
+
+class AddTextCreateView(LoginRequiredMixin,CreateView):
+    login_url = reverse_lazy('login')
     template_name = 'pages/add_text.html'
     model = TextModel
     fields = ('title' , 'image' , 'context', 'categories')

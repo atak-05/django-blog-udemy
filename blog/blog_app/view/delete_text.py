@@ -5,9 +5,11 @@ from blog_app.models import TextModel
 from django.shortcuts import redirect
 from django.views.generic import DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class DeleteTextDeleteView(DeleteView):
+class DeleteTextDeleteView(LoginRequiredMixin,DeleteView):
+    login_url = reverse_lazy('login')
     template_name = 'pages/delete_text_confirm.html'
     success_url= reverse_lazy('mytext')
     def get_queryset(self):
