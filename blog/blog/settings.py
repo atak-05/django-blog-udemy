@@ -9,8 +9,14 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
 from pathlib import Path
+import os
+from unittest.mock import DEFAULT
+import environ
+
+env = environ.Env()
+env.read_env('../.env')
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=n2vh%0_0q25%*(pu#(xx#q*bi@cw$2hjsh^4+_)1dvvyl+mli'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -145,8 +151,18 @@ AUTH_USER_MODEL = 'account.CustomUserModel' #For Custom User
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'home'
- 
 # login redirect ile giriş yapan kullanıcı direk sayfaya yönderilecektir.
 
+
+env = environ.Env()
+env.read_env('../.env')
+SECRET_KEY = env('SECRET_KEY')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER ='gizem.cirikka@outlook.com' 
+EMAIL_HOST_PASSWORD =env('EMAIL_PASSWORD')
+DEFAULT_FROM_EMAIL = 'gizem.cirikka@outlook.com'
 
 
