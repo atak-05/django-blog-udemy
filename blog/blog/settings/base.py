@@ -21,12 +21,15 @@ env.read_env('../.env')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-env.read_env('../.env')
+env.read_env('.env')
+
+SECRET_KEY = env('SECRET_KEY')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 
 
@@ -162,6 +165,19 @@ LOGGING = {
         }
     }    
 }
+#We doing to management erors at Sentry  (THIS IMPORTANT)
+
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+sentry_sdk.init(
+    dsn=env('SENTRY_DNS'),
+    integrations=[
+        DjangoIntegration(),
+    ],
+    traces_sample_rate=1.0,
+    send_default_pii=True
+)
 
 
 
