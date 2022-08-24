@@ -1,13 +1,21 @@
+from asyncio.log import logger
+from imaplib import _Authenticator
 from django.shortcuts import render, get_object_or_404, redirect
 from blog_app.models import TextModel, CommentModel, comment
 from blog_app.forms import AddCommentForm
 from django.views import View
 from django.contrib import messages
+import logging
+
+
+logger = logging.getLogger('subject_read')
 
 class DetailView(View):
     http_method_names = ['get', 'post']
     def get (self, request, slug):
         text =get_object_or_404(TextModel, slug=slug)
+        if request.user.is_authenticated:
+            logger.info('subject_read:'+"   " +request.user.username)
         add_comment_form = AddCommentForm
         comments = text.comments.all()
         return render(request,'pages/detail.html', context={

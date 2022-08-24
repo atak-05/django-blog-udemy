@@ -21,6 +21,7 @@ env.read_env('../.env')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+env.read_env('../.env')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -96,6 +97,8 @@ USE_TZ = True
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
@@ -131,5 +134,35 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER ='gizem.cirikka@outlook.com' 
 EMAIL_HOST_PASSWORD =env('EMAIL_PASSWORD')
 DEFAULT_FROM_EMAIL = 'gizem.cirikka@outlook.com'
+
+
+LOGGING = {
+    'version' : 1,
+    'disable_existing_loggers' : False,
+    'formatters': {
+        'simple_format': {#Logging django formmatter created
+            'format': '{asctime} {levelname} {message} {name}' ,
+            'style' : '{'
+            },
+        },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler'
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename':'logs/subject_read.log',
+            'formatter' : 'simple_format'  #Logging django formmatter used
+        },
+    },
+    'loggers' : {
+        'subject_read': {
+            'handlers':['console','file'],
+            'level': 'INFO'
+        }
+    }    
+}
+
+
 
 

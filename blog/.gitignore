@@ -6,3 +6,5 @@ text_image
 media
 img
 .env
+prod.sqlite3
+logs
