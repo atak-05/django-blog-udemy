@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+from distutils.config import DEFAULT_PYPIRC
 from pathlib import Path
 import os
 from unittest.mock import DEFAULT
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'account',
     #third party
     'crispy_forms',
+    'storages'
     
 ]
 
@@ -166,19 +168,4 @@ LOGGING = {
     }    
 }
 #We doing to management erors at Sentry  (THIS IMPORTANT)
-
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
-
-sentry_sdk.init(
-    dsn=env('SENTRY_DNS'),
-    integrations=[
-        DjangoIntegration(),
-    ],
-    traces_sample_rate=1.0,
-    send_default_pii=True
-)
-
-
-
-
+#=========================SENTRY===========================================#
