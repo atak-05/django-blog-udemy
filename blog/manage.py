@@ -2,6 +2,9 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+#Kaldığın yerden devam et
+
+
 
 
 def main():
