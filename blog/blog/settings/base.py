@@ -146,7 +146,7 @@ LOGGING = {
     'disable_existing_loggers' : False,
     'formatters': {
         'simple_format': {#Logging django formmatter created
-            'format': '{asctime} {levelname} {message} {name}' ,
+            'format': '{asctime} {levelname} {message} {name}',
             'style' : '{'
             },
         },

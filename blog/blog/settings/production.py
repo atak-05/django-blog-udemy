@@ -1,4 +1,4 @@
-from .base import *
+from settings.base import *
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -30,13 +30,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+env = environ.Env()
+env.read_env('../.env')
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME':env('DB_NAME'),
         'USER':env('DB_USER'),
-        'PASSWORD':env('DB_PASSWORD'),
+        'PASSWORD':env('DB__PASSWORD'),
         'HOST':'localhost',
         'PORT': '5432',    
     }
